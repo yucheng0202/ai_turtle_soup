@@ -189,7 +189,7 @@ with right:
 
 with left:
     st.markdown("### 🎮 遊戲區")
-    st.info(st.session_state.question["hint"])
+    st.info(st.session_state.question["hint"] + "\n\n💡 若要直接猜答案，請輸入：我猜XXX")
 
     with st.expander("📖 遊戲規則與專題說明", expanded=False):
         st.write("""
@@ -211,7 +211,7 @@ with left:
     if not GEMINI_API_KEY:
         st.error("尚未設定 Gemini API Key，請先在 .env 裡填入 GEMINI_API_KEY。")
     else:
-        user_input = st.chat_input("請輸入問題，或直接輸入答案猜謎底")
+        user_input = st.chat_input("請輸入問題；若要猜答案請輸入：我猜XXX")
 
         if user_input:
             st.session_state.question_count += 1
